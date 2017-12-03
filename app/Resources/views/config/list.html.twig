@@ -1,0 +1,51 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <h1>All Configs Listing</h1>
+    <div><a href="/config/add" class="btn btn-info">Add Config</a></div>
+
+    <div><a href="/config/new" class="btn btn-info">New Config</a></div>
+    {% if message %}
+        <div class="alert-info">{{ message }}</div>
+    {% endif %}
+    <div class="bs-example">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Created</th>
+                <th>Last Modified</th>
+                <th>API Key</th>
+                <th colspan="2" align="center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if configs %}
+                {% for row in configs %}
+                    <tr>
+                        <td>{{ row.id }}</td>
+                        <td>{{ row.name }}</td>
+                        <td>{{ row.description }}</td>
+                        <td>{{ row.dateCreated|date('Y-m-d') }}</td>
+                        <td>{{ row.dateModified|date('Y-m-d') }}</td>
+                        <td>{{ row.apiKey }}</td>
+                        <td><a href="/config/edit/{{row.id}}" class="btn btn-info">Edit</a></td>
+                        <td>
+                            <form action="/config/delete" method="POST">
+                                <input type="hidden" id="delete" name="delete" value="1">
+                                <input type="hidden" id="config_id" name="config_id" value="{{row.id}}">
+                                <input class="btn btn-danger" type="submit" value ="Delete">
+                            </form>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+            {% else %}
+                <p>No records found</p>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

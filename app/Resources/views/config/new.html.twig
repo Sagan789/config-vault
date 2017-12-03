@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-xs-12">
+        <h1>New Config</h1>
+        {{ form_start(configForm) }}
+        {{ form_widget(configForm) }}
+        <button type="submit" class="btn btn-primary">Save</button>
+        {{ form_end(configForm) }}
+    </div>
+</div>
+</div>
+{% endblock content %}

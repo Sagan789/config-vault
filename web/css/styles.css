@@ -1,0 +1,15 @@
+@import "bootstrap.css";
+
+body {
+	color:black;
+	background-color:white;
+	background-image:url('/img/background/bg_metal.jpg');
+	padding-top: 70px;
+}
+
+.addmore-block {
+	text-align: right;
+	margin: 10px;
+}
+
+

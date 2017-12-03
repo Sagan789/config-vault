@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+        <h1>Add a new Configuration</h1>
+
+        <form role="form" method="POST" action="/config/add">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Configuration Name">
+            </div>
+            <div class="form-group">
+                <label for="name">Description</label>
+                <input type="text" class="form-control" id="description" name="description" placeholder="Description">
+            </div>
+            <div id="config_items" class="form-group">
+            <div class="form-group">
+                <div class="col-lg-6">
+                    <label for="name">Item Key</label>
+                    <input type="text" class="form-control" id="item_key_1" name="item_key_1" placeholder="Key">
+                </div>
+                <div class="col-lg-6">
+                    <label for="name">Item Value</label>
+                    <input type="text" class="form-control" id="item_value_1" name="item_value_1" placeholder="Value">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-6">
+                    <label for="name">Item Key</label>
+                    <input type="text" class="form-control" id="item_key_2" name="item_key_2" placeholder="Key">
+                </div>
+                <div class="col-lg-6">
+                    <label for="name">Item Value</label>
+                    <input type="text" class="form-control" id="item_value_2" name="item_value_2" placeholder="Value">
+                </div>
+            </div>
+
+
+            </div>
+            <div class="form-group">
+                <input type="hidden" id="itemsCount" name="itemsCount" value="2">
+            </div>
+
+            <div class="addmore-block">
+            <button type="button" class="btn glyphicon-expand" onclick="addConfigItems(2)">Add More</button>
+            </div>
+            <div class="center-block text-center">
+                <button type="button" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+        </form>
+    <div class="btn-block text-right">
+        <div><a href="/config/list" class="btn btn-info">Back to Config List</a></div>
+    </div>
+{% endblock content %}
