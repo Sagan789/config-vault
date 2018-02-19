@@ -7,9 +7,12 @@ body {
 	padding-top: 70px;
 }
 
-.addmore-block {
-	text-align: right;
-	margin: 10px;
+.btn-holder {
+	text-align: center;
+	margin: auto;
 }
 
+.item-actions {
+	text-align: right;
+}
 

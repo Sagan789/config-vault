@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Entity\ConfigItem;
 
 /**
  * @ORM\Entity
@@ -64,7 +65,22 @@ class Config
 	public function __construct()
 	{
 		$this->items = new ArrayCollection();
+        $this->setDateCreated(new \DateTime('now'));
+        $this->setDateModified(new \DateTime('now'));
+        $this->api_key = com_create_guid();
 	}
+
+    public function addItem(ConfigItem $item)
+    {
+        $item->setConfig($this);
+        $this->items->add($item);
+    }
+
+
+    public function removeItem(ConfigItem $item)
+    {
+        $this->items->removeElement($item);
+    }
 
 
 	public function getId()
@@ -90,17 +106,6 @@ class Config
 	{
 		return $this->items;
 	}
-
-
-	/**
-	 * @param mixed $items
-	 */
-	public function setItems($items)
-	{
-		$this->items = $items;
-	}
-
-
 
 	/**
 	 * @return string

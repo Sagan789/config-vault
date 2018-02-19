@@ -14,9 +14,6 @@ class ConfigItem
 	const ENV_TEST      =2;
 	const ENV_PROD      =3;
 
-	const TYPE_STRING   = 1;
-	const TYPE_INTEGER  = 2;
-
 	/**
 	 * @ORM\Id
 	 * @ORM\Column(type="integer")
@@ -44,18 +41,6 @@ class ConfigItem
 	 */
 	protected $item_value;
 
-	/**
-	 * @ORM\Column(type="smallint")
-	 * @var int
-	 */
-	protected $type;
-
-	/**
-	 * @ORM\Column(type="smallint")
-	 * @var int
-	 */
-	protected $environment;
-
 
 	/**
 	 * @return mixed
@@ -63,16 +48,6 @@ class ConfigItem
 	public function getId()
 	{
 		return $this->id;
-	}
-
-
-
-	/**
-	 * @param mixed $configId
-	 */
-	public function setConfigId($configId)
-	{
-		$this->configId = $configId;
 	}
 
 
@@ -110,25 +85,6 @@ class ConfigItem
 	{
 		$this->item_value = $item_value;
 	}
-
-
-	/**
-	 * @return mixed
-	 */
-	public function getType()
-	{
-		return $this->type;
-	}
-
-
-	/**
-	 * @param mixed $type
-	 */
-	public function setType($type)
-	{
-		$this->type = $type;
-	}
-
 
 	/**
 	 * @return mixed

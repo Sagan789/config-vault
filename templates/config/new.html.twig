@@ -1,14 +1,22 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
 <div class="container">
-<div class="row">
-    <div class="col-xs-12">
-        <h1>New Config</h1>
-        {{ form_start(configForm) }}
-        {{ form_widget(configForm) }}
-        <button type="submit" class="btn btn-primary">Save</button>
-        {{ form_end(configForm) }}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>New Config</h1>
+            {{ form_start(form) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.description) }}
+        </div>
     </div>
-</div>
+    <div class="config-items" data-prototype="{{ form_widget(form.items.vars.prototype)|e('html_attr') }}">
+    </div>
+    <div class="row">
+            <div class="col-xs-12 btn-block btn-holder">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="{{ path('admin_config_list')  }}" class="btn btn-info">Back to Config List</a>
+            </div>
+            {{ form_end(form) }}
+    </div>
 </div>
 {% endblock content %}
