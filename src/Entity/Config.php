@@ -178,6 +178,18 @@ class Config
 		$this->date_modified = $date_modified;
 	}
 
+	public function toJson() {
+	    $json = [];
+	    $json['name'] = $this->name;
+        $json['date_modified'] = $this->date_modified;
+        $json['items'] = [];
+        $index = 1;
+        foreach ($this->items as $item) {
+            $json['items'][$index] = array($item->getItemKey() => $item->getItemValue());
+            $index++;
+        }
+        return $json;
+    }
 
 
 }

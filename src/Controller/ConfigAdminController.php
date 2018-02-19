@@ -102,6 +102,24 @@ class ConfigAdminController extends Controller
     }
 
     /**
+     * @Route("/api/config/{id}", name="api_config")
+     */
+    public function jsonConfigAction($id, Request $request)
+    {
+
+        $repository = $this->getDoctrine()->getRepository(Config::class);
+        $config = $repository->find($id);
+        if (!$config) {
+            throw $this->createNotFoundException(
+                'No config found for id '.$id
+            );
+        }
+
+        return $this->json($config->toJson());
+    }
+
+
+    /**
      * @Route("/config/delete/{id}", name="admin_config_delete")
      */
     public function deleteAction($id, Request $request)
